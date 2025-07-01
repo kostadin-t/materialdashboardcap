@@ -1,0 +1,9 @@
+### GET Sales Orders
+GET https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_ORDER_SRV/A_SalesOrder
+Accept: application/json
+APIKey: 5NFzjFzp7bWRiqRL6kX2ZVFsNxRRdMRe
+
+### GET Material Availability
+GET https://port4004-workspaces-ws-pnwq2.us10.trial.applicationstudio.cloud.sap/material-availability/Material?$top=50&$filter=Material%20eq%20'FG126'
+Accept: application/json
+APIKey: 5NFzjFzp7bWRiqRL6kX2ZVFsNxRRdMRe
