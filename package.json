@@ -54,7 +54,6 @@
         "[sandbox]": {
           "credentials": {
             "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_ORDER_SRV"
-            
           }
         },
         "[live]": {
@@ -77,6 +76,7 @@
           "credentials": {
             "destination": "0M59S7O_SAML_ASSERTION",
             "path": "/sap/opu/odata/sap/API_PRODUCT_SRV/"
+          }
         },
         "csrf": true,
         "csrfInBatch": true
@@ -93,6 +93,7 @@
           "credentials": {
             "destination": "0M59S7O_SAML_ASSERTION",
             "path": "/sap/opu/odata/sap/API_PRODUCT_AVAILY_INFO_BASIC/"
+          }
         },
         "csrf": true,
         "csrfInBatch": true
