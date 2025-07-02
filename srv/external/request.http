@@ -7,3 +7,6 @@ APIKey: 5NFzjFzp7bWRiqRL6kX2ZVFsNxRRdMRe
 GET https://port4004-workspaces-ws-pnwq2.us10.trial.applicationstudio.cloud.sap/material-availability/Material?$top=50&$filter=Material%20eq%20'FG126'
 Accept: application/json
 APIKey: 5NFzjFzp7bWRiqRL6kX2ZVFsNxRRdMRe
+
+### TEST DESTINATION
+GET https://port4004-workspaces-ws-pnwq2.us10.trial.applicationstudio.cloud.sap/material-availability/SalesOrder

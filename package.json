@@ -6,7 +6,6 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "@cap-js/hana": "^2",
     "@sap-cloud-sdk/connectivity": "^3",
     "@sap-cloud-sdk/http-client": "^4.0.2",
     "@sap-cloud-sdk/resilience": "^3",
@@ -14,9 +13,8 @@
     "@sap/cds": "^9",
     "@sap/low-code-event-handler": "^1.2.5",
     "@sap/xsenv": ">=3.3.2 <3.3.3",
-    "@sap/xssec": "^4.8.0",
+    "@sap/xssec": "^4",
     "express": "^4",
-    "hdb": "^0.19.12",
     "passport": "^0.7.0"
   },
   "engines": {
@@ -25,6 +23,7 @@
   "devDependencies": {
     "@cap-js/cds-types": "^0.11.0",
     "@cap-js/sqlite": "^2",
+    "@sap/cds-dk": ">=8",
     "@sap/dev-cap-tools": "^1.31.0"
   },
   "scripts": {
@@ -32,37 +31,31 @@
     "start-local": "npm run generate-entry-point && npm run cds-watch",
     "generate-entry-point": "dev-cap-tools gen-entrypoint",
     "cds-watch": "cds watch --open",
+    "watch-live": "cds watch --profile live",
     "watch-materialdashboard": "cds watch --open materialdashboard/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "cds": {
     "requires": {
-      "[production]": {
-        "db": "hana",
-        "auth": "xsuaa"
-      },
-      "auth": {
-        "[development]": {
-          "kind": "dummy"
-        },
-        "[production]": {
-          "kind": "xsuaa"
-        }
-      },
       "SalesOrderA2X": {
         "kind": "odata-v2",
         "model": "srv/external/SalesOrderA2X",
         "[sandbox]": {
           "credentials": {
-            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_ORDER_SRV"
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/"
           }
         },
         "[live]": {
           "credentials": {
-            "destination": "0M59S7O_SAML_ASSERTION",
+            "destination": "novartos4clouddev_saml",
             "path": "/sap/opu/odata/sap/API_SALES_ORDER_SRV/"
+          }
         },
-        "csrf": true,
-        "csrfInBatch": true
+        "[production]": {
+          "credentials": {
+            "destination": "novartos4clouddev_saml",
+            "path": "/sap/opu/odata/sap/API_SALES_ORDER_SRV/"
+          }
+        }
       },
       "ProductMasterA2X": {
         "kind": "odata-v2",
@@ -74,12 +67,16 @@
         },
         "[live]": {
           "credentials": {
-            "destination": "0M59S7O_SAML_ASSERTION",
+            "destination": "novartos4clouddev_saml",
             "path": "/sap/opu/odata/sap/API_PRODUCT_SRV/"
           }
         },
-        "csrf": true,
-        "csrfInBatch": true
+        "[production]": {
+          "credentials": {
+            "destination": "novartos4clouddev_saml",
+            "path": "/sap/opu/odata/sap/API_PRODUCT_SRV/"
+          }
+        }
       },
       "BasicProductAvailabilityInfo": {
         "kind": "odata-v2",
@@ -91,12 +88,21 @@
         },
         "[live]": {
           "credentials": {
-            "destination": "0M59S7O_SAML_ASSERTION",
+            "destination": "novartos4clouddev_saml",
             "path": "/sap/opu/odata/sap/API_PRODUCT_AVAILY_INFO_BASIC/"
           }
         },
-        "csrf": true,
-        "csrfInBatch": true
+        "[production]": {
+          "credentials": {
+            "destination": "novartos4clouddev_saml",
+            "path": "/sap/opu/odata/sap/API_PRODUCT_AVAILY_INFO_BASIC/"
+          }
+        }
+      },
+      "[production]": {
+        "auth": {
+          "kind": "xsuaa"
+        }
       }
     }
   },
